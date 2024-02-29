@@ -141,6 +141,8 @@ const JPEG_CANONICAL_EXTENSION: &str = "jpg";
 const JPEG_EXTENSIONS: [&str; 4] = [JPEG_CANONICAL_EXTENSION, "JPG", "jpeg", "JPEG"];
 const TIFF_CANONICAL_EXTENSION: &str = "tiff";
 const TIFF_EXTENSIONS: [&str; 4] = [TIFF_CANONICAL_EXTENSION, "tif", "TIF", "TIFF"];
+const ARW_CANONICAL_EXTENSION: &str = "ARW";
+const ARW_EXTENSIONS: [&str; 4] = [ARW_CANONICAL_EXTENSION, "ARW", "arw", "ARW"];
 
 fn get_target_extension(source_path: &Path) -> Result<&str> {
     let source_extension = source_path
@@ -151,6 +153,8 @@ fn get_target_extension(source_path: &Path) -> Result<&str> {
         Ok(JPEG_CANONICAL_EXTENSION)
     } else if TIFF_EXTENSIONS.contains(&source_extension) {
         Ok(TIFF_CANONICAL_EXTENSION)
+    } else if ARW_EXTENSIONS.contains(&source_extension) {
+        Ok(ARW_CANONICAL_EXTENSION)
     } else {
         Err(Error::Skip(SkipError::Extension))
     }
